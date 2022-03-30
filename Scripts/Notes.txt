@@ -1,0 +1,9 @@
+# Scripts we need : 
+	A 6-digit random number script like '123456'
+	An Email sending script
+	A login script
+	A verify script
+	A sign up script
+	
+
+# Later we'll add more.

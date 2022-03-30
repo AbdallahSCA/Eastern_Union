@@ -1,0 +1,25 @@
+Create Pages :
+	= Home Page 
+	= Login Page 
+	= Sign Up Page
+
+- Home Page :
+	
+
+- Login Page : 
+	Email 
+	Password 
+	Logo
+	Submit button
+	Link for Reset Password or Forgot Password.
+
+- Sign Up Page :
+	Logo 
+	Name 
+	Email
+	Password 
+	Confirm Password
+	Phone
+	Birth date
+	Country
+	

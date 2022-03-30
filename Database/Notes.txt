@@ -1,0 +1,46 @@
+# 5 Tables :
+	Users
+	Employees
+	Accounts
+	Transactions
+	Exchange 
+	
+= Users :
+	NationalID : Int
+	Name	: String
+	Password: String
+	E-Mail	: String
+	Phone	: String
+	Birth Date : Date
+	Country	: String
+	
+= Employess :
+	NationalID : Int
+	Name	: String
+	Password: String
+	E-Mail	: String
+	Phone	: String
+	Birth Date : Date
+	Job	: Enum [Cashier , Admin]
+
+= Accounts :
+	ID	: Int
+	UserID	: Int
+	Credits	: Int
+
+= Exchange :
+	ID	: Int
+	Name of Currency : String
+	Value	: Int 
+
+= Transactions :
+	ID	: Int
+	FromID  : Int
+	ToID	: Int
+	Process Type : Enum [ Withdrawl , Deposit , Exchange , Transfer ]	
+
+
+
+# Finally we will need the Insert , Update , Select Statements for all of those tables.
+
+
