@@ -7,7 +7,8 @@ Name text not null,
 phone text not null,
 Email text not null,
 Birth_Date DATE not null,
-Country	text not null
+Country	text not null,
+Password text not null
 );
 	
 create table Employess  (
