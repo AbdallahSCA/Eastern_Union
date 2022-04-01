@@ -40,7 +40,8 @@ FromID integer not null,
 ToID integer not null,
 Process_Type ENUM('Withdrawl','Deposit','Exchange', 'Transfer') not null,
 Amount integer not null ,
-Curency text not null
+Curency text not null, 
+ Transaction_Date DATETIME not null
 );
 
 
