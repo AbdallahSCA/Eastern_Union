@@ -1,0 +1,88 @@
+<-Sign up->
+<?php
+include('user/connection.php');
+
+if(isset($_POST["signup_submit"])){
+  $name = $_POST["username"];
+  $email = $_POST["email"];
+  $password = $_POST["password"];
+  $ConfirmPassword = $_POST["confirm"];
+  $National_ID = $_POST["ID"];
+  $phone = $_POST["phone"];
+  $Birth_date = $_POST["Birth date"];
+  $gender = $_POST["gender"];
+  $country = $_POST["country"];
+  if(empty($name) OR empty($email) OR empty($password) OR empty($ConfirmPassword) OR empty($National_ID) OR empty($phone) OR empty($Birth_date) OR empty($age) OR empty($gender) OR empty($country)) {
+    die ("There is one or more field is empty");
+  } else {
+    if($password != $ConfirmPassword){
+      die("Password is not matched.");
+    } else {
+      
+    
+    
+      $INSERT_1 = "INSERT INTO `user`(`Name`, `Email`, `Password`, `National_ID`, `phone`, `Birth_date`, `gender`, `country`) VALUES ('$name', '$email', '$password', $National_ID, $phone, $Birth_date, '$gender',$country)";
+      $query = $conn->query($INSERT_1);
+      if (!$query){
+        die($conn->error);
+      } else {
+        $query = $conn->query("SELECT `name`,`email`,`National_ID` FROM `user` WHERE ID=$plan");//نخلي لكل واحد idغير الرقم القومي ولا اي 
+        $row = $query->fetch_assoc();
+        $name = $row['name'];
+        $email=$row['email'];
+        $National_ID=$row['National_ID'];
+        
+        $query = $conn->query("SELECT `ID` FROM `user` WHERE Email='$email'");
+        $row = $query->fetch_assoc();
+        $user = $row["ID"];
+              $now = date('Y-m-d');
+        $end_date = date('Y-m-d', strtotime($now. " + $duration months"));//انتهاء الاشتراك بعد كام شهر
+        $INSERT_3 = "INSERT INTO `user`(`ID`,  `Start_Date`, `End_Date`) VALUES ($user_ID, $plan ,CURRENT_DATE() ,'$end_date')";// something wrong but i cannot select in this line
+        $query = $conn->query($INSERT_3);
+        if (!$query){
+          die($conn->error);
+        }
+      }
+    }
+  }
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+    NAME:<input type="text" name="name"><br>
+    EMAIL:<input type="text" name="email"><br>
+    password:<input type="password" name="password"><br>
+    ConfirmPassword:<input type="password" name="confirmpassword"><br>
+    National ID:<input type="number" name="ID"><br>
+    phone:<input type="number" name="phone">
+    Birth date:<input type="" name="">
+      gender:
+      <input type="radio" name="male"> male
+      <input type="" name="female"> female
+      <label for="country">Choose a country:</label>
+
+<select country="country">
+  <option value="cairo">cairo</option>
+  <option value="giza">giza</option>
+  <option value="Alexandria">Alexandria</option>
+  <option value="daqhlia" selected>daqhlia</option>
+  <option value="sharqia">sharqia</option>
+  <option value="monofia">monofia</option>
+  <option value="qalubia">qalubia</option>
+  <option value="behira">behira</option>
+  <option value="garbia">garbia</option>
+  <option value="borseed">borseed</option>
+  <option value="domyat">domyat</option><break>
+</select> 
+<input type="SIGN UP" name="Sign up">
+</body>
+</html>
