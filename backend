@@ -153,6 +153,95 @@ if(isset($_POST['forgot'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<---login--->
+<?php
+include('Admin/connection.php');
+
+// Login Form
+if(isset($_POST['login'])){
+    if (empty($_POST['email'])or empty($_POST['password'])){
+        die("One or more Fields are Empty.");
+    } else { 
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $select = "select Email from user where Email = '$email'";
+    $query = $conn->query($select); // User data 
+    if (!$query) {
+        die($conn->error);
+    } else { // check email 
+        $array = $query->fetch_assoc();
+        $email_from_db = $array['Email'];    
+        if($email_from_db == $email) {
+            $select = "select Password from user where Email = '$email'";
+            $query = $conn->query($select);//connenction to mysqli
+            if (!$query) {
+                die($conn->error);
+            } else { //check password
+                $array = $query->fetch_assoc();
+                $password_from_db = $array['Password'];
+                if($password_from_db == $password) {
+                    $select = "select * from user where Email = '$email'";
+                    $query = $conn->query($select);
+                    $row = $query->fetch_assoc();
+                    $_SESSION["login"] = True; // adding session data
+                    $_SESSION["user"] = $row; // adding session data
+                } else {
+                    die("Password is wrong");
+                    //die("$password");
+                }
+            }
+        } else {
+            die("Email doesn't exist");
+        }
+        header('Location: user_HomePage.php');
+    }
+    }
+}
+?><?php
+include('Admin/connection.php');
+
+// Login Form
+if(isset($_POST['login'])){
+    if (empty($_POST['email'])or empty($_POST['password'])){
+        die("One or more Fields are Empty.");
+    } else { 
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $select = "select Email from user where Email = '$email'";
+    $query = $conn->query($select); // User data 
+    if (!$query) {
+        die($conn->error);
+    } else { // check email 
+        $array = $query->fetch_assoc();
+        $email_from_db = $array['Email'];    
+        if($email_from_db == $email) {
+            $select = "select Password from user where Email = '$email'";
+            $query = $conn->query($select);//connenction to mysqli
+            if (!$query) {
+                die($conn->error);
+            } else { //check password
+                $array = $query->fetch_assoc();
+                $password_from_db = $array['Password'];
+                if($password_from_db == $password) {
+                    $select = "select * from user where Email = '$email'";
+                    $query = $conn->query($select);
+                    $row = $query->fetch_assoc();
+                    $_SESSION["login"] = True; // adding session data
+                    $_SESSION["user"] = $row; // adding session data
+                } else {
+                    die("Password is wrong");
+                    //die("$password");
+                }
+            }
+        } else {
+            die("Email doesn't exist");
+        }
+        header('Location: user_HomePage.php');
+    }
+    }
+}
+?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -164,3 +253,54 @@ if(isset($_POST['forgot'])){
     PHOne:<input type="number" name="phone">;
 </body>
 </html>
+
+
+
+
+<---login--->
+
+
+<?php
+include('Admin/connection.php');
+
+// Login Form
+if(isset($_POST['login'])){
+    if (empty($_POST['email'])or empty($_POST['password'])){
+        die("One or more Fields are Empty.");
+    } else { 
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $select = "select Email from user where Email = '$email'";
+    $query = $conn->query($select); // User data 
+    if (!$query) {
+        die($conn->error);
+    } else { // check email 
+        $array = $query->fetch_assoc();
+        $email_from_db = $array['Email'];    
+        if($email_from_db == $email) {
+            $select = "select Password from user where Email = '$email'";
+            $query = $conn->query($select);//connenction to mysqli
+            if (!$query) {
+                die($conn->error);
+            } else { //check password
+                $array = $query->fetch_assoc();
+                $password_from_db = $array['Password'];
+                if($password_from_db == $password) {
+                    $select = "select * from user where Email = '$email'";
+                    $query = $conn->query($select);
+                    $row = $query->fetch_assoc();
+                    $_SESSION["login"] = True; // adding session data
+                    $_SESSION["user"] = $row; // adding session data
+                } else {
+                    die("Password is wrong");
+                    //die("$password");
+                }
+            }
+        } else {
+            die("Email doesn't exist");
+        }
+        header('Location: user_HomePage.php');
+    }
+    }
+}
+?>
